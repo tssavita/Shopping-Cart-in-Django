@@ -7,7 +7,7 @@ class Cart(models.Model):
     """
     Describes the features of the shopping cart.
     """
-    created_date = models.DateTimeField()
+    created_date = models.DateTimeField(primary_key=True)
     number_of_products = models.PositiveIntegerField()
 
     class Meta:
@@ -23,7 +23,12 @@ class Product(models.Model):
     """
 
     name = models.CharField(max_length=80)
+    code = models.CharField(primary_key=True, validators=[RegexValidator(
+                                                                regex='^[0-9]*$',
+                                                                message='Invalid characters in the code.'
+                                                                )]
     cost = models.PositiveIntegerField()
+    cart = models.ForeignKey('Cart')
     quantity = models.PositiveIntegerField()
     description = models.TextField()
     photo = models.ImageField(upload_to='', blank = True)
