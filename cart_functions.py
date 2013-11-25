@@ -68,7 +68,8 @@ class Shoppingcart:
 
                 # If the product is not present in the cart nothing is done. 
     
-                
+    '''            
+    
     def displayProducts():
 
         """
@@ -78,6 +79,7 @@ class Shoppingcart:
         for i in Contained.objects.all():
             <><>
                 
+    '''
 
     def clearCart(self):
         
