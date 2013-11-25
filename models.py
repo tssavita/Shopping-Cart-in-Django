@@ -35,22 +35,3 @@ class Product(models.Model):
         verbose_name = ('product')
         verbose_name_plural = ('products')
 
-class Contained(models.Model):
-
-    """
-    This class is the relation between the products and carts.
-    Since one cart contains many products and one product can be 
-    contained in many classes, it is a Many - To - Many relation 
-    between the products and carts. This results in a table for 
-    the relation between the two entities. 
-    """
-
-    cart_number = models.ForeignKey(Cart, verbose_name=_('cart number'))
-    code = models.CharField(primary_key=True, validators=[RegexValidator(
-                                              regex='^[0-9]*$',
-                                              message='Invalid characters in the code.'
-                                              )]
-
-    class Meta:
-        verbose_name = _('contained')
-        verbose_name_plural = _('')
